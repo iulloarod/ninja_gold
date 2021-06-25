@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+Ninja Gold!
+{% endblock %}
+
+{% block style %}
+*{border: 1px red solid}
+#paloro {border: 2px black solid}
+.caja {border: 3px black solid}
+
+{% endblock %}
+{% block header %}
+En desarrollo
+{% endblock %}
+
+
+{% block nav %}
+<div class="row">
+<h5 class="col-1">Your Gold: </h5><h5 class="col-1" id="paloro">{{gold}}</h5>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="row my-2 justify-content-center">
+    <div class="caja col-2 p-1 mx-4">
+        <form action="process_money" method="POST" name="farm">
+            <input type="hidden" name="min" value="10">
+            <input type="hidden" name="max" value="20">
+            {% csrf_token %}
+            <h3 class="text-center">Farm</h3><br>
+            <p class="text-center">earns 10-20 golds</p>
+            <div class="text-center">
+                <button type="submit" title="Submit Form">Find Gold!</button>
+            </div>
+        </form>
+    </div>
+    <div class="caja col-2 p-1 px-2 mx-4">
+        <form action="process_money" method="POST" name="farm">
+            <input type="hidden" name="min" value="5">
+            <input type="hidden" name="max" value="10">
+            {% csrf_token %}
+            <h3 class="text-center">Cave</h3><br>
+            <p class="text-center">earns 5-10 golds</p>
+            <div class="text-center">
+                <button type="submit" title="Submit Form">Find Gold!</button>
+            </div>
+        </form>
+    </div>
+    <div class="caja col-2 p-1 px-2 mx-4">
+        <form action="process_money" method="POST" name="farm">
+            <input type="hidden" name="min" value="2">
+            <input type="hidden" name="max" value="5">
+            {% csrf_token %}
+            <h3 class="text-center">House</h3><br>
+            <p class="text-center">earns 2-5 golds</p>
+            <div class="text-center">
+                <button type="submit" title="Submit Form">Find Gold!</button>
+            </div>
+        </form>
+    </div>
+    <div class="caja col-2 p-1 mx-4">
+        <form action="process_money" method="POST" name="farm">
+            <input type="hidden" name="min" value="-50">
+            <input type="hidden" name="max" value="50">
+            {% csrf_token %}
+            <h3 class="text-center">Casino</h3><br>
+            <p class="text-center">earns/takes 0-50 golds</p>
+            <div class="text-center">
+                <button type="submit" title="Submit Form">Find Gold!</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <h5>Activities:</h5><br>
+    <textarea readonly name="activities" id="activities" cols="30" rows="10"></textarea>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+
+<a href="reset"><button class="btn btn-primary" type="submit">reset</button></a>
+{% endblock %}
